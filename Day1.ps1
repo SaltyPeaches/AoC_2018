@@ -1,5 +1,5 @@
 # Part 1
-$inp = Get-Content .\Day1_input.txt
+$inp = Get-Content .\Inputs\Day1.txt
 [int]$frequency = 0
 
 foreach($line in $inp){

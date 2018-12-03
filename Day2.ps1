@@ -1,5 +1,5 @@
 # Part 1
-$in = Get-Content .\Day2_input.txt
+$in = Get-Content .\Inputs\Day2.txt
 
 $Part1 = ($in | ?{[bool]($_.ToCharArray() | Group | ?{$_.count -eq 2})} | Measure).Count * ($in | ?{[bool]($_.ToCharArray() | Group | ?{$_.count -eq 3})} | Measure).Count
 

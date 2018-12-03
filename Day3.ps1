@@ -1,5 +1,5 @@
 # Part 1
-$in = Get-Content .\Day3_input.txt
+$in = Get-Content .\Inputs\Day3.txt
 $grid = New-Object 'int[,]' 2000,2000
 
 foreach($rect in $in){
