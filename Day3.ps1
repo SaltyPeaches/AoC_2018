@@ -23,7 +23,7 @@ foreach($rect in $in){
     }
 }
 
-$part1 = ($grid -ge 2 | measure).Count
+$part1 = ($grid -gt 1 | measure).Count
 
 # Part 2
 foreach($rect in $in){
