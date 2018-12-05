@@ -27,7 +27,7 @@ $total = $alphabetsoup.Length
 $loop = 0
 $lengths = foreach($noodle in $alphabetsoup){
     $loop++
-    write-host "Loop $loop of $total - Letter $noodle"
+    Write-Progress -Activity "Evaluating possible polymers" -Status "$loop of $total" -PercentComplete (($loop/$total)*100)
     [PSCustomObject]@{
         Letter = $noodle
         Length = (ReactPolymer ($in -replace $noodle))
