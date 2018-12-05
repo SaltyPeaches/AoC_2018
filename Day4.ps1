@@ -1,14 +1,20 @@
+$in = Get-Content $PSScriptRoot\Inputs\Day4.txt
+$loop = 0
+
 # Hash to store guard IDs and arrays for minutes asleep
 $guards = @{}
 
-Get-Content .\Inputs\Day4.txt  | sort-object {
+$in | sort-object {
     [void]($_ -match '\[(.*)\] (.*)')
     Get-Date $matches[1]
 } | foreach { 
     [void]($_ -match '\[(.*)\] (.*)')
     $date = get-date $matches[1]
     $action = $matches[2]
+    $loop++
+    $perc = [math]::Round(($loop/($in.count))*100)
 
+    Write-Progress -Activity "Evaluating sleepy time" -Status "$perc% Complete" -PercentComplete $perc
     switch -regex ($action)
     {
         'Guard #(\d+)' { 
