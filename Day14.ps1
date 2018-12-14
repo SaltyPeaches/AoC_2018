@@ -2,6 +2,8 @@
 [int]$Length = ([string]$in).Length
 $One = $false
 $Two = $false
+
+# Because we're using a hashtable, we need to reverse the input to compare it to the last set of values for Part 2
 $compare = [string]$in
 $compare = $compare.ToCharArray()
 [array]::Reverse($compare)
