@@ -77,10 +77,24 @@ while(($carts | ?{$_.InService}).Count -gt 1){
             DEFAULT{$cart.nextTurn}
         }
         $newDirection = switch($grid[$newX,$newY]){
-            '-'{if($cart.Direction-eq'>'){'>'}else{'<'}}
-            '\'{if($cart.Direction-eq'>'){'v'}elseif($cart.Direction-eq'v'){'>'}elseif($cart.Direction-eq'<'){'^'}else{'<'}}
-            '/'{if($cart.Direction-eq'v'){'<'}elseif($cart.Direction-eq'<'){'v'}elseif($cart.Direction-eq'>'){'^'}else{'>'}}
-            '|'{if($cart.Direction-eq'v'){'v'}else{'^'}}
+            '-'{$cart.Direction}
+            '\'{
+                switch($cart.Direction){
+                    '>'{'v'}
+                    'v'{'>'}
+                    '<'{'^'}
+                    '^'{'<'}
+                }
+            }
+            '/'{
+                switch($cart.Direction){
+                    '>'{'^'}
+                    'v'{'<'}
+                    '<'{'v'}
+                    '^'{'>'}
+                }
+            }
+            '|'{$cart.Direction}
             '+'{
                 switch($cart.nextTurn){
                     'Left'{
